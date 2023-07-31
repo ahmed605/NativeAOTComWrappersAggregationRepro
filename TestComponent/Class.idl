@@ -1,0 +1,9 @@
+namespace TestComponent
+{
+    [default_interface]
+    unsealed runtimeclass Class
+    {
+        Class();
+        Int32 MyProperty;
+    }
+}

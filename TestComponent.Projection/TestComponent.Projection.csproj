@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.0.3" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <WindowsSdkPackageVersion>10.0.22000.21</WindowsSdkPackageVersion>
+    <CSWinRTIncludes>
+      TestComponent;
+    </CSWinRTIncludes>
+    <CSWinRTWindowsMetadata>local</CSWinRTWindowsMetadata>
+    <CsWinRTGenerateProjection>true</CsWinRTGenerateProjection>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CsWinRTInputs Include="..\$(Platform)\$(Configuration)\TestComponent\TestComponent.winmd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestComponent\TestComponent.vcxproj" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
