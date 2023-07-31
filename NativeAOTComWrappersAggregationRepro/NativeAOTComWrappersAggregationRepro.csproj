@@ -21,5 +21,19 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />
   </ItemGroup>
+  
+  <Target Name="_FixUpProjectConfigurations"
+        BeforeTargets="ResolveVCRTForwarderReferences"
+        Condition="'@(ProjectReferenceWithConfiguration)' != '' And '$(VCRTForwarders-IncludeDebugCRT)' == ''">
+
+        <ItemGroup>
+            <_SavedProjectReferenceWithConfiguration Include="@(ProjectReferenceWithConfiguration)">
+                <Configuration>$(Configuration)</Configuration>
+                <Platform>$(Platform)</Platform>
+            </_SavedProjectReferenceWithConfiguration>
+            <ProjectReferenceWithConfiguration Remove="@(ProjectReferenceWithConfiguration)" />
+            <ProjectReferenceWithConfiguration Include="@(_SavedProjectReferenceWithConfiguration)" />
+        </ItemGroup>
+   </Target>
 
 </Project>

@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using Windows.UI.Input;
-using Windows.UI.WindowManagement;
+﻿using System.Diagnostics;
 
 namespace NativeAOTComWrappersAggregationRepro
 {
@@ -13,6 +11,8 @@ namespace NativeAOTComWrappersAggregationRepro
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Waiting for a debugger, press any key to continue");
+            Console.Read();
             new TestClass();
         }
     }
